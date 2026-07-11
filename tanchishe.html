@@ -189,7 +189,7 @@
             </div>
         </div>
         <div style="display: flex; justify-content: center; margin-top: 8px;">
-            <span class="hint">⬆ ⬇ ⬅ ➡  /  Space 暂停</span>
+            <span class="hint">W S A D  /  Space 暂停</span>
         </div>
     </div>
 </div>
@@ -520,8 +520,10 @@
         function handleKeydown(e) {
             const key = e.key;
             // 阻止方向键滚动 & 空格
-            if (key.startsWith('Arrow') || key === ' ' || key === 'Spacebar' || key === 'Space') {
-                e.preventDefault();
+            if (key.startsWith('Arrow') || key === ' ' || key === 'Spacebar' || key === 'Space' 
+            || key === 'w' || key === 'W' || key === 'a' || key === 'A' || key === 's' || key === 'S' || key === 'd' 
+            || key === 'D') {
+    e.preventDefault();
             }
 
             // 空格：暂停（仅当游戏已开始且未结束）
@@ -537,10 +539,10 @@
             if (!gameStarted || gameOver || paused) return;
 
             let newDir = null;
-            if (key === 'ArrowUp') newDir = 'up';
-            else if (key === 'ArrowDown') newDir = 'down';
-            else if (key === 'ArrowLeft') newDir = 'left';
-            else if (key === 'ArrowRight') newDir = 'right';
+            if (key === 'w' || key === 'W') newDir = 'up';
+            else if (key === 's' || key === 'S') newDir = 'down';
+            else if (key === 'a' || key === 'A') newDir = 'left';
+            else if (key === 'd' || key === 'D') newDir = 'right';
             else return;
 
             const opposite = { 'up': 'down', 'down': 'up', 'left': 'right', 'right': 'left' };
