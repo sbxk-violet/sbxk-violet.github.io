@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>李禹豪 · 个人简历</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            color: #1e2b3c;
+        }
+
+        .resume {
+            max-width: 860px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2.8rem 3.5rem;
+            transition: all 0.2s;
+        }
+
+        /* ===== 头部 ===== */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #13262f;
+            padding-bottom: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #13262f;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: #3d6373;
+            margin-top: 0.2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        /* ===== 个人信息 + 证件照 左右布局 ===== */
+        .info-photo-row {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            margin-bottom: 1.8rem;
+        }
+
+        .info-list {
+            flex: 1;
+            background: #f6fafd;
+            padding: 1rem 1.8rem;
+            border-radius: 1.2rem;
+            border: 1px solid #e2edf5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: baseline;
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed #e2edf5;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #3d6373;
+            width: 80px;
+            flex-shrink: 0;
+            font-size: 0.88rem;
+        }
+
+        .info-value {
+            color: #1e2b3c;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .photo-side {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6fafd;
+            border-radius: 1.2rem;
+            border: 1px solid #e2edf5;
+            padding: 1.2rem 1.8rem;
+            min-height: 100%;
+        }
+
+        .photo-placeholder {
+            width: 130px;
+            height: 170px;
+            border-radius: 10px;          
+            border: 4px solid #6b9bb0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            background: transparent;      
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;            
+            display: block;
+        }
+
+        .photo-placeholder span {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.15rem 0.5rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #cddce6;
+        }
+
+        /* ===== 通用章节 ===== */
+        .section {
+            margin-bottom: 1.8rem;
+        }
+
+        .section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #13262f;
+            border-left: 6px solid #3b7a8f;
+            padding-left: 1rem;
+            margin-bottom: 0.7rem;
+        }
+
+        /* ===== 个人评价 ===== */
+        .self-eval {
+            background: #f6fafd;
+            padding: 1rem 1.5rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b7a8f;
+            color: #1f3d4a;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ===== 教育背景 ===== */
+        .edu-item {
+            margin-top: 0.2rem;
+        }
+
+        .edu-item strong {
+            font-weight: 700;
+            color: #0b2a35;
+            display: block;
+            font-size: 1.02rem;
+        }
+
+        .edu-item .meta {
+            font-size: 0.85rem;
+            color: #3d6373;
+            margin-top: 0.1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 1.4rem;
+        }
+
+        .edu-item .desc {
+            margin-top: 0.3rem;
+            color: #1f3d4a;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            background: #f6fafd;
+            padding: 0.5rem 1.2rem;
+            border-radius: 14px;
+        }
+
+        /* ===== 课程项目经历 ===== */
+        .project-item {
+            background: #f6fafd;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #3b7a8f;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-item .title {
+            font-weight: 700;
+            color: #0b2a35;
+            font-size: 1rem;
+        }
+
+        .project-item .tech {
+            font-size: 0.8rem;
+            color: #3d6373;
+            margin: 0.1rem 0 0.2rem 0;
+        }
+
+        .project-item .desc {
+            font-size: 0.9rem;
+            color: #1f3d4a;
+            line-height: 1.7;
+        }
+
+        /* ===== 职业技能 ===== */
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.8rem;
+            padding: 0.2rem 0;
+        }
+
+        .skill-item {
+            background: #e4eef5;
+            color: #133a48;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #c7dae5;
+        }
+
+        /* ===== 兴趣爱好 ===== */
+        .hobby-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+        }
+
+        .hobby-item {
+            background: #f0f6fb;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f4455;
+            border: 1px solid #d2e2ed;
+        }
+
+        /* ===== 项目链接 ===== */
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            margin-top: 0.2rem;
+            background: #f4f9fd;
+            padding: 0.7rem 1.4rem;
+            border-radius: 40px;
+            border: 1px solid #d5e4ed;
+        }
+
+        .project-links a {
+            color: #1a5f77;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.15s;
+        }
+
+        .project-links a:hover {
+            border-bottom-color: #3b7a8f;
+            color: #0c3f52;
+        }
+
+        .project-links span {
+            color: #5e7e8e;
+            font-weight: 300;
+        }
+
+        .project-extra {
+            margin-top: 0.6rem;
+            font-size: 0.85rem;
+            color: #3d6373;
+            background: #f0f6fb;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .project-extra a {
+            color: #1a5f77;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-extra a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 700px) {
+            .resume {
+                padding: 2rem 1.8rem;
+            }
+
+            .info-photo-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .photo-side {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .info-list {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .resume {
+                padding: 1.2rem 1rem;
+                border-radius: 1.2rem;
+            }
+
+            .photo-placeholder {
+                width: 90px;
+                height: 90px;
+                font-size: 1.8rem;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .section h2 {
+                font-size: 1.05rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                border-radius: 20px;
+            }
+
+            .project-links span {
+                display: none;
+            }
+
+            .info-list {
+                padding: 0.6rem 0.8rem;
+            }
+
+            .info-label {
+                width: 65px;
+                font-size: 0.8rem;
+            }
+
+            .info-value {
+                font-size: 0.85rem;
+            }
+
+            .skill-list {
+                gap: 0.3rem 0.5rem;
+            }
+
+            .skill-item {
+                font-size: 0.78rem;
+                padding: 0.15rem 0.9rem;
+            }
+
+            .hobby-grid {
+                gap: 0.4rem 0.7rem;
+            }
+
+            .hobby-item {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume">
+
+        <!-- ===== 第一部分：个人信息 ===== -->
+        <div class="header">
+            <h1>李禹豪</h1>
+        </div>
+
+        <div class="info-photo-row">
+            <div class="info-list">
+                <div class="info-row"><span class="info-label">手机</span><span class="info-value">18807352193</span></div>
+                <div class="info-row"><span class="info-label">年龄</span><span class="info-value">22</span></div>
+                <div class="info-row"><span class="info-label">邮箱</span><span class="info-value">3155945560@qq.com</span></div>
+                <div class="info-row"><span class="info-label">学历</span><span class="info-value">本科</span></div>
+                <div class="info-row"><span class="info-label">籍贯</span><span class="info-value">湖南省汝城县</span></div>
+                <div class="info-row"><span class="info-label">出生日期</span><span class="info-value">2005-01-14</span></div>
+            </div>
+            <div class="photo-side">
+                <div class="photo-placeholder">
+                    <img src="photo.jpg" alt="证件照" />
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 第二部分：教育背景 ===== -->
+        <section class="section">
+            <h2>🎓 教育背景</h2>
+            <div class="edu-item">
+                <strong>中南林业科技大学 · 信息与计算科学</strong>
+                <div class="meta"><span>📅 2022-09 至 2026-06</span><span>📍 长沙</span></div>
+                <div class="desc">
+                    主修课程：C语言、C++、Java程序设计、Web前端开发、算法设计与分析、面向对象设计与分析、数据库原理及应用、Python编程、数学分析、高等代数、数值分析等。在校期间成绩优良，具备扎实的数学基础和编程能力。
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 第三部分：课程项目经历 ===== -->
+        <section class="section">
+            <h2>📁 课程项目经历</h2>
+
+             <!-- 项目1：贪吃蛇游戏 -->
+            <div class="project-item">
+                <div class="title">🐍 贪吃蛇游戏</div>
+                <div class="tech">🛠️ HTML5 + Canvas + JavaScript | 前端开发</div>
+                <div class="desc">
+                    独立开发交互式贪吃蛇游戏，锻炼JavaScript综合编程能力。<br />
+                    采用Canvas实现图形渲染，面向对象方式管理游戏状态（蛇身移动、食物生成、碰撞检测）。<br />
+                    实现键盘方向控制、实时计分、暂停/继续、游戏结束重置等完整交互逻辑。<br />
+                    使用requestAnimationFrame实现流畅动画循环，部署至Cloudflare Pages。
+                </div>
+            </div>
+
+            <!-- 项目2：个人博客系统 -->
+            <div class="project-item">
+                <div class="title">🌐 个人博客系统</div>
+                <div class="tech">🛠️ Flask + Vue.js + SQLite | 全栈开发</div>
+                <div class="desc">
+                    独立完成多用户博客平台前后端开发，支持文章管理、评论互动与权限控制。<br />
+                    搭建Flask后端（RESTful API）+ Vue.js前端（SPA应用），实现前后端分离架构。<br />
+                    设计三级权限模型（管理员/普通用户/访客），实现基于角色的访问控制（RBAC）。<br />
+                    集成Markdown编辑器，支持文章实时预览；实现文章发布、分类标签、评论审核、用户管理等核心功能。<br />
+                    项目作为课程优秀案例展示，完整覆盖登录认证、发布、评论、权限管理全流程。
+                </div>
+            </div>
+
+           <!-- 项目3：学校综合管理系统 -->
+            <div class="project-item">
+                <div class="title">🏫 学校综合管理系统</div>
+                <div class="tech">🛠️ Flask + SQLAlchemy + SQLite | 全栈开发</div>
+                <div class="desc">
+                    独立设计并开发一体化学校管理平台，实现人员、课程、安保、进出记录全流程管理。<br />
+                    开发人员管理（CRUD+状态流转）、课表可视化查询（双视角+冲突检测）、保安排班（今日在岗动态展示）、进出记录（实时同步在校状态）、综合查询5大模块。<br />
+                    设计6张数据表及10+ RESTful API；编写课表冲突检测算法，冲突拦截准确率100%；进出记录联动状态更新，响应＜500ms。<br />
+                    原生HTML/CSS/JS构建响应式界面，代码总量约2300行，覆盖4类角色，开箱即用自动化测试数据。
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== 第四部分：职业技能（修复标签嵌套） ===== -->
+        <section class="section">
+            <h2>⚙️ 职业技能</h2>
+            <div style="background: #f6fafd; padding: 1rem 1.5rem; border-radius: 1.2rem; border-left: 4px solid #3b7a8f;">
+                <div style="margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.7; color: #1f3d4a;">
+                    <strong>🧮 数学与算法基础：</strong>具备较好的数学思维，主修数学分析、高等代数、数值分析等课程，善于将数学模型与编程实践相结合，解决实际业务问题。
+                </div>
+                <div style="margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.7; color: #1f3d4a;">
+                    <strong>🌐 Web 前端开发：</strong>掌握 HTML5 语法与语义化标签，能够构建结构清晰、符合标准的网页页面，具备一定的 CSS 布局与 JavaScript 交互基础。
+                </div>
+                <div style="margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.7; color: #1f3d4a;">
+                    <strong>⚡ 后端与全栈：</strong>熟悉 Flask 框架，能够独立搭建轻量级 Web 应用，实现路由设计、模板渲染、表单处理与数据库交互（SQLite / MySQL），具备前后端协作开发能力。
+                </div>
+                <div style="font-size: 0.95rem; line-height: 1.7; color: #1f3d4a;">
+                    <strong>📊 数据处理与分析：</strong>熟练掌握 Excel 高级功能（数据透视表、函数公式、图表制作），能够运用 Python（Pandas、NumPy）进行数据清洗、特征提取与可视化分析。
+                </div>
+            </div>
+            <div class="skill-list" style="margin-top: 0.8rem;">
+                <span class="skill-item">英语四级 (CET-4)</span>
+                <span class="skill-item">驾驶证 (C1)</span>
+            </div>
+        </section>
+
+        <!-- ===== 第五部分：个人评价 ===== -->
+        <section class="section">
+            <h2>📌 个人评价</h2>
+            <div class="self-eval">
+                具备较为扎实的编程功底，能够将数学逻辑与工程实践有效结合。对待工作任务，秉持能吃苦的精神，具备较好的团队意识，积极为团队付出。虽然偶尔在非核心项上略显拖拉，但始终能保持清醒思维，确保关键节点的完成效率。同时，接收新东西能力较强，相信能为团队持续注入技术活力。乐于通过技术博客和开源社区持续学习，保持对前沿技术的敏感度。
+            </div>
+        </section>
+
+        <!-- ===== 第六部分：兴趣爱好 ===== -->
+        <section class="section">
+            <h2>🎯 兴趣爱好</h2>
+            <div class="hobby-grid">
+                <span class="hobby-item">🎮 游戏</span>
+                <span class="hobby-item">🏸 羽毛球</span>
+                <span class="hobby-item">♟️ 象棋</span>
+                <span class="hobby-item">🎬 动漫</span>
+                <span class="hobby-item">🧘 冥想</span>
+            </div>
+        </section>
+
+        <!-- ===== 第七部分：项目链接 ===== -->
+        <section class="section" style="margin-bottom: 0;">
+            <h2>🔗 项目链接</h2>
+            <div class="project-links">
+                <a href="https://sbxk-violet-github-io.pages.dev/tanchishe.html" target="_blank">🐍 贪吃蛇游戏  (HTML + CSS + JavaScript)</a>
+                <span>|</span>
+                <a href="https://liyuhao.pythonanywhere.com/blog" target="_blank">🌐 个人博客网站 (Flask)</a>
+                <span>|</span>
+                <a href="https://liyuhao.pythonanywhere.com" target="_blank">🏫  学校管理系统 (Python)</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
